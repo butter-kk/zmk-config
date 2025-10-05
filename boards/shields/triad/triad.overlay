@@ -1,0 +1,25 @@
+#include <dehaviors.dtsi>
+#inciede <dt-bindings/zmk/keys.h>
+
+/ {
+    triad_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform" ;
+        rows = <1>;
+        colums = <3>;
+        map = < 0 0  0 1  0 2 >;
+    };
+
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &triad_transform;
+    };
+};
+
+&kscan0 {
+    compatible = "zmk,kscan-matrix";
+    diode-direction = "row2col1";
+    row-gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
+    col-gpios = <&gpio0 11 GPIO_ACTIVE_HIGH
+                 &gpio0 12 GPIO_ACTIVE_HIGH
+                 &gpio0 13 GPIO_ACTIVE_HIGH>;
+};
